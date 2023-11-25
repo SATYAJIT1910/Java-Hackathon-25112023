@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
                     if (rs.next()) {
                         int uid = rs.getInt("UID");
 
-                        // Retrieve user and application information using INNER JOIN
+                       
                         query = "SELECT * FROM USERS U,APPLICATIONS A,COURSE C WHERE U.UID = A.UID AND A.COURSECODE=C.COURSECODE AND U.UID = ?";
                         try (PreparedStatement pst1 = conn.prepareStatement(query)) {
                             pst1.setInt(1, uid);
@@ -76,7 +76,14 @@ public class LoginServlet extends HttpServlet {
                                     out.println("<p>UG Marks: " + rs1.getInt("UGMARKS") + "</p>");
                                     out.println("<p>UG University: " + rs1.getString("UGUNIVERSITY") + "</p>");
                                   
+                                    out.println("<a href=/JavaHackathon/>Back</a>");
                                     
+                                    
+                                //  delete button
+                                out.println("<br><br><form action='DeleteUserServlet' method='post'>");
+                                out.println("<input type='hidden' name='uid' value='" + uid + "'>");
+                                out.println("<input type='submit' value='Delete Application'>");
+                                out.println("</form>");
                                     
                                 } else {
                                     out.println("<p>User not found.</p>");
@@ -86,7 +93,7 @@ public class LoginServlet extends HttpServlet {
                             out.println("<h2>Error in inner query: " + e.getMessage() + "</h2>");
                         }
                     } else {
-                        // Authentication failed, display an error message
+                    
                         out.println("<h2>Incorrect username or password!</h2>");
                     }
                 }
