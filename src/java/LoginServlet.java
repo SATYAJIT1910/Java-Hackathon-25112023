@@ -60,31 +60,34 @@ public class LoginServlet extends HttpServlet {
                             pst1.setInt(1, uid);
                             try (ResultSet rs1 = pst1.executeQuery()) {
                                 if (rs1.next()) {
+                                    out.println("   <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN\" crossorigin=\"anonymous\">");
+                                    out.println("<div class=\"p-5\">");
                                     out.println("<h2>User Information:</h2>");
-                                    out.println("<p>First Name: " + rs1.getString("FNAME") + "</p>");
-                                    out.println("<p>Last Name: " + rs1.getString("LNAME") + "</p>");
-                                    out.println("<p>Date of Birth: " + rs1.getDate("DOB") + "</p>");
-                                    out.println("<p>Address: " + rs1.getString("ADDRESS") + "</p>");
-                                    out.println("<p>Gender: " + rs1.getString("GENDER") + "</p>");
-                                    out.println("<p>Mobile: " + rs1.getLong("MOBILE") + "</p>");
-                                    out.println("<p>Email: " + rs1.getString("EMAIL") + "</p>");
+                                    out.println("<b><p>First Name: </b>" + rs1.getString("FNAME") + "</p>");
+                                    out.println("<b><p>Last Name: </b>" + rs1.getString("LNAME") + "</p>");
+                                    out.println("<b><p>Date of Birth: </b>" + rs1.getDate("DOB") + "</p>");
+                                    out.println("<b><p>Address: </b>" + rs1.getString("ADDRESS") + "</p>");
+                                    out.println("<b><p>Gender: </b>" + rs1.getString("GENDER") + "</p>");
+                                    out.println("<b><p>Mobile: </b>" + rs1.getLong("MOBILE") + "</p>");
+                                    out.println("<b><p>Email: </b>" + rs1.getString("EMAIL") + "</p>");
 
                                     out.println("<h2>Application Information:</h2>");
-                                    out.println("<p>Course Code: " + rs1.getString("COURSECODE") + "</p>");
-                                    out.println("<p>Tenth Marks: " + rs1.getInt("TENTHMARKS") + "</p>");
-                                    out.println("<p>Twelfth Marks: " + rs1.getInt("TWELMARKS") + "</p>");
-                                    out.println("<p>UG Marks: " + rs1.getInt("UGMARKS") + "</p>");
-                                    out.println("<p>UG University: " + rs1.getString("UGUNIVERSITY") + "</p>");
+                                    out.println("<b><p>Course Code: </b>" + rs1.getString("COURSECODE") + "</p>");
+                                    out.println("<b><p>10<sup>th</sup> Marks: </b>" + rs1.getInt("TENTHMARKS") + "</p>");
+                                    out.println("<b><p>12<sup>th</sup> Marks: </b>" + rs1.getInt("TWELMARKS") + "</p>");
+                                    out.println("<b><p>UG Marks: </b>" + rs1.getInt("UGMARKS") + "</p>");
+                                    out.println("<b><p>UG University: </b>" + rs1.getString("UGUNIVERSITY") + "</p>");
                                   
-                                    out.println("<a href=/JavaHackathon/>Back</a>");
+                                    
                                     
                                     
                                 //  delete button
                                 out.println("<br><br><form action='DeleteUserServlet' method='post'>");
                                 out.println("<input type='hidden' name='uid' value='" + uid + "'>");
-                                out.println("<input type='submit' value='Delete Application'>");
+                                out.println("<input class=\"btn btn-danger\"type='submit' value='Delete Application'>");
+                                out.println("<a class=\"btn btn-primary\" href=/JavaHackathon/>Back</a>");
                                 out.println("</form>");
-                                    
+                                out.println("</div>");
                                 } else {
                                     out.println("<p>User not found.</p>");
                                 }
@@ -95,6 +98,7 @@ public class LoginServlet extends HttpServlet {
                     } else {
                     
                         out.println("<h2>Incorrect username or password!</h2>");
+                         out.println("<a href=/JavaHackathon/>Back</a>");
                     }
                 }
             } catch (Exception e) {
