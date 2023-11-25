@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Home::Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link href="style/index.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+         <div class="wrapper">
+         <div class="title-text">
+            <div class="title login">
+               Login
+            </div>
+
+         </div>
+         <div class="form-container">
+            <div class="form-inner">
+               <form  action="/JavaHackathon/login" class="login" method = "POST">
+                  <div class="field">
+                     <input type="text" placeholder="Mobile Number" name="uname" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" placeholder="Password" name="passwd" required>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Login" >
+                  </div>
+                  <div class="signup-link">
+                     Not Registered? <a href="/JavaHackathon/newRegistration.jsp">Signup now</a>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+    </body>
+</html>
